@@ -5,15 +5,21 @@ import PetDetailsNotFound from "./pages/petDetailsNotFound";
 import Root from "./components/root";
 
 import {
-  RouteProvider,
+  RouterProvider,
   createHashRouter,
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
 
-const appRouter = "REPLACE ME";
+const appRouter = createHashRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Root />}>
+      {" "}
+    </Route>
+  )
+);
 
 function App() {
-  return <RouteProvider router={appRouter} />;
+  return <RouterProvider router={appRouter} />;
 }
 export default App;

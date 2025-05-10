@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { getPets } from "../../api/petfinder";
 import Hero from "../../components/hero";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 
 const HomePage = () => {
   const [data, setData] = useState(null);
   const { type } = useParams();
-
-  console.log("Current URL:", window.location.href);
-  console.log("useParams output:", type);
 
   useEffect(() => {
     async function getPetsData() {
       const petsData = await getPets(type);
       setData(petsData);
     }
-
     getPetsData();
   }, [type]);
 
@@ -30,13 +26,13 @@ const HomePage = () => {
         <span className="pet-type-label">{type ? `${type}s` : "Pets"}</span>{" "}
         available for adoption near you
       </h3>
-      <p>{type} emptz?</p>
+
       {data.length ? (
         <div className="grid">
           {data.map((animal) => (
-            <a // Change me to a Link!
+            <NavLink
               key={animal.id}
-              href={`/${animal.type.toLowerCase()}/${animal.id}`}
+              to={`/${animal.type.toLowerCase()}/${animal.id}`}
               className="pet"
             >
               <article>
@@ -54,7 +50,7 @@ const HomePage = () => {
                 <p>Color: {animal.colors.primary}</p>
                 <p>Gender: {animal.gender}</p>
               </article>
-            </a> // Don't forget to change me!
+            </NavLink>
           ))}
         </div>
       ) : (

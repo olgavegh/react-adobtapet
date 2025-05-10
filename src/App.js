@@ -7,6 +7,7 @@ import Root from "./components/root";
 import {
   RouterProvider,
   createHashRouter,
+  //  createBrowserRouter,
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
@@ -15,6 +16,7 @@ const appRouter = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<HomePage />} />
+      <Route path=":type" element={<HomePage />} />
     </Route>
   )
 );

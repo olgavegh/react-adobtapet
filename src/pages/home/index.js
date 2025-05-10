@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getPets } from "../../api/petfinder";
 import Hero from "../../components/hero";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const HomePage = () => {
   const [data, setData] = useState(null);
@@ -30,7 +30,7 @@ const HomePage = () => {
       {data.length ? (
         <div className="grid">
           {data.map((animal) => (
-            <NavLink
+            <Link
               key={animal.id}
               to={`/${animal.type.toLowerCase()}/${animal.id}`}
               className="pet"
@@ -50,7 +50,7 @@ const HomePage = () => {
                 <p>Color: {animal.colors.primary}</p>
                 <p>Gender: {animal.gender}</p>
               </article>
-            </NavLink>
+            </Link>
           ))}
         </div>
       ) : (

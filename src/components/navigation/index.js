@@ -24,7 +24,12 @@ const Navigation = () => {
       </div>
       <ul className="nav-links">
         <li key={"all"}>
-          <NavLink to="/" className="nav-link">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `nav-link ${isActive ? "nav-link-active" : ""}`
+            }
+          >
             All Pets
           </NavLink>
         </li>
@@ -34,7 +39,9 @@ const Navigation = () => {
                 <NavLink
                   to={`/${type._links.self.href.split("/").pop()}`}
                   key={type.name}
-                  className="nav-link"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "nav-link-active" : ""}`
+                  }
                 >
                   {type.name}s
                 </NavLink>{" "}

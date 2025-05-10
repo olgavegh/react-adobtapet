@@ -14,7 +14,7 @@ import {
 const appRouter = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      {" "}
+      <Route index element={<HomePage />} />
     </Route>
   )
 );
